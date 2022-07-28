@@ -43,4 +43,4 @@ public class Singletone<T> : MonoBehaviour where T : Component
         _isApplicationQuitting = true;
     }
 }
-}
+
