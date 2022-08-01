@@ -5,7 +5,7 @@ public class Singletone<T> : MonoBehaviour where T : Component
     private static T _instance;
     private static bool _isApplicationQuitting;
 
-    public static T Instance
+    public static T instance
     {
         get
         {
