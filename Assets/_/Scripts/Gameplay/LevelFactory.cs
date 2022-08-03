@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 public static class LevelFactory
 {
     private static readonly Transform _container;
-    private static readonly GameObject _ballPrefab;
+    private static readonly Ball _ballPrefab;
     private static readonly Cell _floorPrefab;
     private static readonly Cell _wallPrefab;
 
@@ -13,15 +13,15 @@ public static class LevelFactory
     {
         _container = new GameObject("[LevelContainer]").transform;
 
-        _ballPrefab = Resources.Load<GameObject>("Gameplay/Ball");
+        _ballPrefab = Resources.Load<Ball>("Gameplay/Ball");
         _floorPrefab = Resources.Load<Cell>("Gameplay/Floor");
         _wallPrefab = Resources.Load<Cell>("Gameplay/Wall");
     }
 
-    public static GameObject CreateBall(Vector2Int spawnPoint)
+    public static Ball CreateBall(Vector2Int spawnPoint)
     {
         var ball = Object.Instantiate(_ballPrefab, _container);
-        ball.transform.position = new Vector3(spawnPoint.x, 0f, spawnPoint.y);
+        ball.Teleport(spawnPoint);
         return ball;
     }
 
@@ -41,7 +41,7 @@ public static class LevelFactory
                 throw new ArgumentOutOfRangeException(nameof(cellType), cellType, null);
         }
 
-        cell.Initialize(index);
+        cell.Initialize(index, cellType);
         return cell;
     }
 }

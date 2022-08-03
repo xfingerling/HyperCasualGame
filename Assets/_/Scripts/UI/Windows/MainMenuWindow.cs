@@ -12,11 +12,6 @@ public class MainMenuWindow : WindowBase
         _playButton.onClick.AddListener(OnPlayButtonClicked);
     }
 
-    private void Start()
-    {
-        Debug.Log("MainMenuWindow Start");
-    }
-
     private void OnPlayButtonClicked()
     {
         var level = MainApp.instance.dynamicDataProvider.Levels.First();

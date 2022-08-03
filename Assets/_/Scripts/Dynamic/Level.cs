@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Level : MonoBehaviour
+public class Level
 {
     public CellType[,] cells { get; }
     public Vector2Int spawnPoint { get; }
